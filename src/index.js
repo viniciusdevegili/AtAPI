@@ -13,9 +13,12 @@ app.get('/', (req, res) => {
 const userApi = new UserApi();
 const postagemApi = new PostagemApi();
 
-app.use(userApi.validarToken);
 app.get('/users', userApi.listarUsuario);
 app.post('/users', userApi.criarUsuario);
+app.post('/login', userApi.validarToken);
+
+app.use(userApi.validarToken);
+
 app.put('/users/:id', userApi.alterarUsuario);
 app.delete('/users/:id', userApi.deletarUsuario);
 
